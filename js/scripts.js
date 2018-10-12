@@ -69,119 +69,119 @@ var navigate = (function() {
       }
     }
   }
-  /*	const points = [];
-  	const canvas = {
-  		init() {
-  			this.elem = document.querySelector("canvas");
-  			this.resize();
-  			window.addEventListener("resize", () => this.resize(), false);
-  			return this.elem.getContext("2d");
-  		},
-  		resize() {
-  			this.width = this.elem.width = this.elem.offsetWidth;
-  			this.height = this.elem.height = this.elem.offsetHeight;
-  			let x = 0;
-  			const sx = this.width / (txt.length + 1);
-  			for (const p of points) {
-  				p.x0 = x;
-  				p.y0 = canvas.height / 2;
-  				x += sx;
-  			}
-  		}
-  	};
-  	const ctx = canvas.init();
-  	ctx.imageSmoothingEnabled = true;
-  	const pointer = {
-  		x: 0,
-  		y: 0,
-  		dx: 0,
-  		dy: 0,
-  		drag: null,
-  		over: null,
-  		down(e, touch) {
-  			this.move(e, touch);
-  			if (this.over) {
-  				this.dx = this.x - this.over.x;
-  				this.dy = this.y - this.over.y;
-  				this.drag = this.over;
-  				canvas.elem.style.cursor = "move";
-  			}
-  		},
-  		up(e, touch) {
-  			this.drag = null;
-  			canvas.elem.style.cursor = "default";
-  		},
-  		move(e, touch) {
-  			const pointer = touch ? e.targetTouches[0] : e;
-  			this.x = pointer.clientX;
-  			this.y = pointer.clientY;
-  			this.over = null;
-  			if (this.drag === null) {
-  				for (const p of points) {
-  					const dx = this.x - p.x;
-  					const dy = this.y - p.y;
-  					const d = Math.sqrt(dx * dx + dy * dy);
-  					if (d < p.s * 0.5) {
-  						canvas.elem.style.cursor = "pointer";
-  						this.over = p;
-  						break;
-  					} else {
-  						canvas.elem.style.cursor = "default";
-  					}
-  				}
-  			}
-  		},
-  		init() {
-  			window.addEventListener("mousedown", e => this.down(e, false), false);
-  			window.addEventListener("touchstart", e => this.down(e, true), false);
-  			window.addEventListener("mousemove", e => this.move(e, false), false);
-  			canvas.elem.addEventListener("touchmove", e => this.move(e, true), false);
-  			window.addEventListener("mouseup", e => this.up(e, false), false);
-  			window.addEventListener("touchend", e => this.up(e, true), false);
-  		}
-  	};
-  	{
-  		let x = 0;
-  		const sx = canvas.width / (txt.length + 1);
-  		for (let i = 0; i < txt.length + 2; i++) {
-  			points.push(new Point(i, x, canvas.height / 2));
-  			x += sx;
-  		}
-  		for (let i = 1; i < txt.length + 1; i++) {
-  			const p = points[i];
-  			p.p0 = points[i - 1];
-  			p.p1 = points[i + 1];
-  			p.s = sx;
-  			p.texture(txt.charAt(i - 1), i === 5 ? "#f80" : "#fff");
-  		}
-  		// spring button
-  		const radios = document.spring.radios;
-  		for(const radio of radios) {
-  			radio.addEventListener('change', e => {
-  				if (e.currentTarget.value === "on") {
-  					viscosity = 0.005;
-  					stiffness = 0.99;
-  				} else {
-  					viscosity = 0.0;
-  					stiffness = 0.0;
-  				}
-  			}, false);
-  		}
-  	}
-  	const run = () => {
-  		requestAnimationFrame(run);
-  		ctx.clearRect(0, 0, canvas.width, canvas.height);
-  		for (const p of points) {
-  			if (pointer.drag === p) {
-  				p.x = pointer.x - pointer.dx;
-  				p.y = pointer.y - pointer.dy;
-  			}
-  			p.draw();
-  		}
-  		for (const p of points) {
-  			p.drawSegment();
-  		}
-  	}
-  	pointer.init();
-  	run();
-  }
+  const points = [];
+  const canvas = {
+    init() {
+      this.elem = document.querySelector("canvas");
+      this.resize();
+      window.addEventListener("resize", () => this.resize(), false);
+      return this.elem.getContext("2d");
+    },
+    resize() {
+      this.width = this.elem.width = this.elem.offsetWidth;
+      this.height = this.elem.height = this.elem.offsetHeight;
+      let x = 0;
+      const sx = this.width / (txt.length + 1);
+      for (const p of points) {
+        p.x0 = x;
+        p.y0 = canvas.height / 2;
+        x += sx;
+      }
+    }
+  };
+  /*  	const ctx = canvas.init();
+    	ctx.imageSmoothingEnabled = true;
+    	const pointer = {
+    		x: 0,
+    		y: 0,
+    		dx: 0,
+    		dy: 0,
+    		drag: null,
+    		over: null,
+    		down(e, touch) {
+    			this.move(e, touch);
+    			if (this.over) {
+    				this.dx = this.x - this.over.x;
+    				this.dy = this.y - this.over.y;
+    				this.drag = this.over;
+    				canvas.elem.style.cursor = "move";
+    			}
+    		},
+    		up(e, touch) {
+    			this.drag = null;
+    			canvas.elem.style.cursor = "default";
+    		},
+    		move(e, touch) {
+    			const pointer = touch ? e.targetTouches[0] : e;
+    			this.x = pointer.clientX;
+    			this.y = pointer.clientY;
+    			this.over = null;
+    			if (this.drag === null) {
+    				for (const p of points) {
+    					const dx = this.x - p.x;
+    					const dy = this.y - p.y;
+    					const d = Math.sqrt(dx * dx + dy * dy);
+    					if (d < p.s * 0.5) {
+    						canvas.elem.style.cursor = "pointer";
+    						this.over = p;
+    						break;
+    					} else {
+    						canvas.elem.style.cursor = "default";
+    					}
+    				}
+    			}
+    		},
+    		init() {
+    			window.addEventListener("mousedown", e => this.down(e, false), false);
+    			window.addEventListener("touchstart", e => this.down(e, true), false);
+    			window.addEventListener("mousemove", e => this.move(e, false), false);
+    			canvas.elem.addEventListener("touchmove", e => this.move(e, true), false);
+    			window.addEventListener("mouseup", e => this.up(e, false), false);
+    			window.addEventListener("touchend", e => this.up(e, true), false);
+    		}
+    	};
+    	{
+    		let x = 0;
+    		const sx = canvas.width / (txt.length + 1);
+    		for (let i = 0; i < txt.length + 2; i++) {
+    			points.push(new Point(i, x, canvas.height / 2));
+    			x += sx;
+    		}
+    		for (let i = 1; i < txt.length + 1; i++) {
+    			const p = points[i];
+    			p.p0 = points[i - 1];
+    			p.p1 = points[i + 1];
+    			p.s = sx;
+    			p.texture(txt.charAt(i - 1), i === 5 ? "#f80" : "#fff");
+    		}
+    		// spring button
+    		const radios = document.spring.radios;
+    		for(const radio of radios) {
+    			radio.addEventListener('change', e => {
+    				if (e.currentTarget.value === "on") {
+    					viscosity = 0.005;
+    					stiffness = 0.99;
+    				} else {
+    					viscosity = 0.0;
+    					stiffness = 0.0;
+    				}
+    			}, false);
+    		}
+    	}
+    	const run = () => {
+    		requestAnimationFrame(run);
+    		ctx.clearRect(0, 0, canvas.width, canvas.height);
+    		for (const p of points) {
+    			if (pointer.drag === p) {
+    				p.x = pointer.x - pointer.dx;
+    				p.y = pointer.y - pointer.dy;
+    			}
+    			p.draw();
+    		}
+    		for (const p of points) {
+    			p.drawSegment();
+    		}
+    	}
+    	pointer.init();
+    	run();
+    }
