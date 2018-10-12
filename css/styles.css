@@ -12,8 +12,9 @@ body, html {
 
 .my_social {
   position: absolute;
-  top: 125px;
+  top: 65px;
   left: 25px;
+  z-index: 10;
 }
 
 .my_social a {
@@ -75,7 +76,7 @@ input[type="radio"]:checked+label {
   font-weight: normal;
   text-align: center;
   color: #c0c0c0;
-  padding-top: 550px;
+  padding-top: 370px;
   padding-bottom: 10px;
   width: 375px;
   margin: 0 auto;
@@ -116,7 +117,7 @@ input[type="radio"]:checked+label {
   color: #04d;
 }
 
-/*.cal td {
+.cal td {
   padding: 0 2px;
   line-height: 100%;
 }
