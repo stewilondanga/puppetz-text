@@ -50,15 +50,16 @@ input[type="radio"] {
   display: none;
 }
 
-/*input[type="radio"] + label {
-	display: inline-block;
-	padding: 4px 8px;
-	color: #fff;
-	background-color: #666;
-	border-color: none;
-	cursor: pointer;
+input[type="radio"]+label {
+  display: inline-block;
+  padding: 4px 8px;
+  color: #fff;
+  background-color: #666;
+  border-color: none;
+  cursor: pointer;
 }
-input[type="radio"]:checked + label {
+
+/*input[type="radio"]:checked + label {
 	background-image: none;
 	background-color: #fff;
 	color: #000;
