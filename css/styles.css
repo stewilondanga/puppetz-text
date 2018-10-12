@@ -40,12 +40,13 @@ form[name="spring"] {
   margin: 10px;
 }
 
-/*.setup {
-	color: #888;
-	font-family: arial;
-	margin: 10px;
+.setup {
+  color: #888;
+  font-family: arial;
+  margin: 10px;
 }
-input[type="radio"] {
+
+/*input[type="radio"] {
 	display: none;
 }
 input[type="radio"] + label {
