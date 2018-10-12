@@ -167,20 +167,20 @@ var navigate = (function() {
       }, false);
     }
   }
-  /*const run = () => {
-    		requestAnimationFrame(run);
-    		ctx.clearRect(0, 0, canvas.width, canvas.height);
-    		for (const p of points) {
-    			if (pointer.drag === p) {
-    				p.x = pointer.x - pointer.dx;
-    				p.y = pointer.y - pointer.dy;
-    			}
-    			p.draw();
-    		}
-    		for (const p of points) {
-    			p.drawSegment();
-    		}
-    	}
-    	pointer.init();
-    	run();
+  const run = () => {
+    requestAnimationFrame(run);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const p of points) {
+      if (pointer.drag === p) {
+        p.x = pointer.x - pointer.dx;
+        p.y = pointer.y - pointer.dy;
+      }
+      p.draw();
     }
+    for (const p of points) {
+      p.drawSegment();
+    }
+  }
+  pointer.init();
+  run();
+}
