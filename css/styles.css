@@ -33,13 +33,14 @@ canvas {
   background: #000;
 }
 
-/*form[name="spring"] {
-	position: absolute;
-	color: #888;
-	font-family: arial;
-	margin: 10px;
+form[name="spring"] {
+  position: absolute;
+  color: #888;
+  font-family: arial;
+  margin: 10px;
 }
-.setup {
+
+/*.setup {
 	color: #888;
 	font-family: arial;
 	margin: 10px;
