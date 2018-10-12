@@ -46,10 +46,11 @@ form[name="spring"] {
   margin: 10px;
 }
 
-/*input[type="radio"] {
-	display: none;
+input[type="radio"] {
+  display: none;
 }
-input[type="radio"] + label {
+
+/*input[type="radio"] + label {
 	display: inline-block;
 	padding: 4px 8px;
 	color: #fff;
